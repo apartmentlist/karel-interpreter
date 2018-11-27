@@ -114,7 +114,7 @@ if token?
 end
 ```
 
-#### Example: nested `while`
+#### Example: a basic `while` statement
 
 ```
 # This will safely remove all tokens from a square.
@@ -125,8 +125,18 @@ end
 
 ### User-defined commands
 
-The Karel language supports user-defined commands, though these commands do not take
-arguments and do not return a value. Commands are defined as follows
+The Karel language supports user-defined commands. These commands do not take
+arguments and do not return a value. Commands are defined with the following syntax
+
+```
+def <command-name>
+  <statement-1>
+  <statement-2>
+  ...
+end
+```
+
+#### Example
 
 ```
 def turn_around
