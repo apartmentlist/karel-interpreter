@@ -19,9 +19,9 @@ module Model
       return self
     end
 
-    def put(location)
+    def put(location, value = 1)
       @tokens[location] ||= 0
-      @tokens[location] += 1
+      @tokens[location] += value
       return self
     end
 
