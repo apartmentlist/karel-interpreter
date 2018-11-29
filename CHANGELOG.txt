@@ -1,3 +1,7 @@
+Version 0.2.0, 2018-11-29
+-------------------------
+e60c95b Allow initialization of Karel board with command line option
+
 Version 0.1.0, 2018-11-26
 -------------------------
 17e434f Initial release
