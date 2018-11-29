@@ -38,6 +38,38 @@ tokens: [{"location"=>"(-1, 0)", "count"=>1}, {"location"=>"(0, 1)", "count"=>1}
 operations: 9
 ```
 
+### Options
+
+The interpreter optionally takes a Karel configuration file (`-i FILE`) to initialize
+tokens on the Karel grid. The file format looks like
+
+```
+tokens: [{"location": "(-1, 0)", "count": 1}, {"location": "(0, 1)", "count": 2}]
+```
+
+The above initialization file will place one token at location (-1, 0) and two tokens
+at (0, 1)
+
+#### Example
+
+```
+# initial_tokens.kin
+tokens: [{"location": "(-1, 0)", "count": 1}, {"location": "(0, 1)", "count": 2}]
+```
+
+```
+# noop_program.krl
+# Do nothing
+```
+
+```
+% karel -i initial_tokens.kin noop_program.krl
+location: (0, 0)
+direction: up
+tokens: [{"location"=>"(-1, 0)", "count"=>1}, {"location"=>"(0, 1)", "count"=>2}]
+operations: 0
+```
+
 ### Output
 
 * Location - location of Karel when the program finishes
