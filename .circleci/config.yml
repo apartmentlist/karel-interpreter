@@ -1,0 +1,49 @@
+version: 2.1
+
+jobs:
+  test-ruby2-4:
+    docker:
+      - image: circleci/ruby:2.4.5
+    working_directory: ~/karel
+    environment:
+      BUNDLER_VERSION: 1.16.1
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo gem uninstall bundler
+            sudo find /usr/local/lib/ruby -wholename '*default/bundler-*.gemspec' -delete
+            find /usr/local/lib/ruby/gems -type d -name bundler-* | xargs sudo rm -rf
+            find /usr/local/bin -type f -name 'bundle*' | xargs sudo rm
+            sudo gem install bundler -v "$BUNDLER_VERSION"
+      - run:
+          command: bundle install
+      - run:
+          command: bundle exec rake
+
+  test-ruby2-5:
+    docker:
+      - image: circleci/ruby:2.5.3
+    working_directory: ~/karel
+    environment:
+      BUNDLER_VERSION: 1.16.1
+    steps:
+      - checkout
+      - run:
+          command: |
+            sudo gem uninstall bundler
+            sudo find /usr/local/lib/ruby -wholename '*default/bundler-*.gemspec' -delete
+            find /usr/local/lib/ruby/gems -type d -name bundler-* | xargs sudo rm -rf
+            find /usr/local/bin -type f -name 'bundle*' | xargs sudo rm
+            sudo gem install bundler -v "$BUNDLER_VERSION"
+      - run:
+          command: bundle install
+      - run:
+          command: bundle exec rake
+
+workflows:
+  version: 2.1
+  test-all:
+    jobs:
+      - test-ruby2-4
+      - test-ruby2-5
