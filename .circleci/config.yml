@@ -17,6 +17,8 @@ jobs:
             find /usr/local/bin -type f -name 'bundle*' | xargs sudo rm
             sudo gem install bundler -v "$BUNDLER_VERSION"
       - run:
+          command: bundle --version
+      - run:
           command: bundle install
       - run:
           command: bundle exec rake
@@ -36,6 +38,8 @@ jobs:
             find /usr/local/lib/ruby/gems -type d -name bundler-* | xargs sudo rm -rf
             find /usr/local/bin -type f -name 'bundle*' | xargs sudo rm
             sudo gem install bundler -v "$BUNDLER_VERSION"
+      - run:
+          command: bundle --version
       - run:
           command: bundle install
       - run:
